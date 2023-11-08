@@ -74,8 +74,11 @@ To effectively use this project, follow these steps:
      ```
 
    - You should now see the Swagger UI, which provides a user-friendly interface to explore and interact with the available API endpoints.
-   - To access Swagger UI, it will ask username and password where `username is admin and password is admin@<to date>. eg admin@8 or admin@15 etc. 
-   
+   - To access Swagger UI, it will ask username and password where
+     ```
+     username is admin and password is admin@<to date>. eg admin@8 or admin@15 etc.
+     ```
+     
 ## API Endpoints and Their Usage
 
 ### Create a New Book
