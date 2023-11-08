@@ -10,7 +10,8 @@
     "copyfiles": "copyfiles -u 1 src/config/swagger/swagger-output.json dist/",
     "build": "npm run swagger-autogen && tsc && npm run copyfiles",
     "build-staging": "export NODE_ENV=staging && npm run build",
-    "staging": "export NODE_ENV=staging && node dist/index.js"
+    "staging": "export NODE_ENV=staging && node dist/index.js",
+    "postinstall": "npm run build-staging" 
   },
   "keywords": [],
   "author": "",
