@@ -33,11 +33,11 @@ const getBookById = async (req: Request, res: Response, next: NextFunction) => {
     if (!req.params.id) {
       res.status(400).json({ status: ERROR, message: BAD_REQUEST });
     }
-    const book = await Book.findById(bookId);
-    if (!book) {
+    const data = await Book.findById(bookId);
+    if (!data) {
       return res.status(404).json({ status: ERROR, message: "Book not found" });
     }
-    res.json(book);
+    res.status(200).json({ status: SUCCESS, data });
   } catch (err: any) {
     next(err);
   }
@@ -53,13 +53,13 @@ const updateBook = async (req: Request, res: Response, next: NextFunction) => {
     if (!req.body) {
       res.status(400).json({ status: ERROR, message: BAD_REQUEST });
     }
-    const updatedBook = await Book.findByIdAndUpdate(bookId, req.body, {
+    const data = await Book.findByIdAndUpdate(bookId, req.body, {
       new: true,
     });
-    if (!updatedBook) {
+    if (!data) {
       return res.status(404).json({ status: ERROR, message: "Book not found" });
     }
-    res.json(updatedBook);
+    res.status(200).json({ status: SUCCESS, data });
   } catch (err: any) {
     next(err);
   }
@@ -76,7 +76,7 @@ const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
     if (!deletedBook) {
       return res.status(404).json({ status: ERROR, message: "Book not found" });
     }
-    res.json({ message: "Book deleted" });
+    res.status(200).json({ status: SUCCESS, message: "Book deleted" });
   } catch (err: any) {
     next(err);
   }
