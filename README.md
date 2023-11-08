@@ -74,9 +74,76 @@ To effectively use this project, follow these steps:
      ```
 
    - You should now see the Swagger UI, which provides a user-friendly interface to explore and interact with the available API endpoints.
+## API Endpoints and Their Usage
 
+### Create a New Book
+- **Endpoint:** `POST /books`
+- **Description:** Create a new book.
+- **Request Body:**
+  - `title` (string): Title of the book (required).
+  - `author` (string): Author of the book (required).
+  - `summary` (string): Summary of the book (required).
+- **Example Request:**
+  ```json
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "summary": "A classic novel about the adventures of Holden Caulfield."
+  }
+
+### Get a List of All Books
+- **Endpoint:** `GET /books`
+- **Description:** Get a list of all books.
+- **Response:** Returns an array of all books.
+- **Example Response:**
+  ```json
+  {
+      "status": "success",
+      "data": [
+        {
+          "_id": "654aebcf8722d67878bc9672",
+          "title": "White Noise",
+          "author": "Don DeLillo",
+          "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar vitae eros id fringilla."
+        },
+        {
+          "_id": "654b3afbe790efd9f74c0fe6",
+          "title": "White Noise 1",
+          "author": "Don DeLillo 1",
+          "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar vitae eros id fringilla. 11"
+        }
+      ]
+  }
+  
+### Get Details of a Specific Book by ID
+- **Endpoint:** `GET /books/:id`
+- **Description:** Get details of a specific book by its unique ID.
+- **Response:** Returns the book with the specified ID or a "Book not found" message if the book doesn't exist.
+- **Example Response:**
+  ```json
+  {
+      "_id": "5f5c57b4d2860c001c38d314",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "summary": "A classic novel about the adventures of Holden Caulfield."
+  }
+  
+### Update a Book's Details by ID
+- **Endpoint:** `PUT /books/:id`
+- **Description:** Update a book's details by its unique ID.
+- **Request Body:** Include the fields you want to update (e.g., title, author, summary).
+- **Example Request:**
+  ```json
+  {
+      "title": "New Title"
+  }
+
+### Delete a Book by ID
+- **Endpoint:** `DELETE /api/books/:id`
+- **Description:** Delete a book by its unique ID.
+- **Response:** Returns a "Book deleted" message or a "Book not found" message if the book doesn't exist.
+  
 ## Scripts
-
 Here are some useful scripts you can run:
 - **swagger-autogen**: Generate Swagger documentation.
 - **start**: Start the application in development/staging/production mode.
